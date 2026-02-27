@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Electron OTA Test - Home</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>
+        <img src="assets/logo.png" alt="Logo" class="logo">
+        Electron OTA Update Test
+      </h1>
+    </header>
+
+    <nav>
+      <button class="nav-btn active" data-page="home">Home</button>
+      <button class="nav-btn" data-page="page2">Settings</button>
+      <button class="nav-btn" onclick="window.electron.checkForUpdate()">Check Updates</button>
+    </nav>
+
+    <main>
+      <div id="home" class="page active">
+        <div class="card">
+          <h2>Welcome to Electron OTA Update Test</h2>
+          <p>This application is designed to test Over-The-Air (OTA) updates for Electron applications distributed via GitHub releases.</p>
+          
+          <div class="status-box info">
+            <strong>Current Version:</strong> <span id="version">Loading...</span>
+          </div>
+
+          <h3 style="margin-top: 20px; color: #333;">Update Management</h3>
+          <p>This application automatically checks for updates on startup. You can also manually check for updates using the button in the navigation bar.</p>
+          
+          <div id="update-status" class="status-box" style="display: none;"></div>
+          
+          <h3 style="margin-top: 20px; color: #333;">Features</h3>
+          <ul style="margin-left: 20px; color: #666; line-height: 1.8;">
+            <li>Automatic update checking on application start</li>
+            <li>Manual update checking via menu button</li>
+            <li>Automatic update download in the background</li>
+            <li>One-click installation with application restart</li>
+            <li>GitHub releases integration via electron-updater</li>
+            <li>Error handling and status notifications</li>
+          </ul>
+
+          <h3 style="margin-top: 20px; color: #333;">How to Test OTA Updates</h3>
+          <ol style="margin-left: 20px; color: #666; line-height: 1.8;">
+            <li>Create a GitHub repository (e.g., electron-ota-test)</li>
+            <li>Update the GitHub repository URL in package.json</li>
+            <li>Build and publish the application using electron-builder</li>
+            <li>Create a release on GitHub with the built application files</li>
+            <li>Modify the version in package.json and create a new release</li>
+            <li>Run the application and it will automatically detect the new version</li>
+            <li>The application will download and install the update</li>
+          </ol>
+
+          <div style="margin-top: 30px; padding: 15px; background: #f9f9f9; border-radius: 4px;">
+            <strong>⚠️ Important Notes:</strong>
+            <ul style="margin-left: 20px; margin-top: 10px; color: #666; line-height: 1.8;">
+              <li>Update the "homepage" and publish settings in package.json with your GitHub repository details</li>
+              <li>GitHub repository must be public for releases to be accessible</li>
+              <li>Release assets should include the built application files and latest.yml file</li>
+              <li>Use electron-builder to automatically generate these files</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div id="page2" class="page">
+        <div class="card">
+          <h2>Settings & Information</h2>
+          
+          <h3 style="color: #333;">Application Information</h3>
+          <div class="status-box">
+            <p><strong>App Name:</strong> Electron OTA Test</p>
+            <p><strong>Version:</strong> <span id="version-page2">Loading...</span></p>
+            <p><strong>Platform:</strong> <span id="platform">Loading...</span></p>
+            <p><strong>Electron Version:</strong> Available via require('electron').app.getVersion()</p>
+          </div>
+
+          <h3 style="margin-top: 20px; color: #333;">Update Configuration</h3>
+          <div class="status-box info">
+            <p>The application uses <strong>electron-updater</strong> for OTA updates.</p>
+            <p>Update source: <code>GitHub Releases</code></p>
+            <p>Check interval: Automatically on startup</p>
+            <p>Installation method: Quit and install (requires application restart)</p>
+          </div>
+
+          <h3 style="margin-top: 20px; color: #333;">Troubleshooting Updates</h3>
+          <p style="color: #666;">If updates are not being detected:</p>
+          <ul style="margin-left: 20px; color: #666; line-height: 1.8;">
+            <li>Ensure the GitHub repository URL is correct in package.json</li>
+            <li>Check that releases are published in your GitHub repository</li>
+            <li>Verify that release assets include the application files</li>
+            <li>Look for error messages in the developer console (DevTools)</li>
+            <li>Ensure the new version number is higher than the current version</li>
+          </ul>
+
+          <div style="margin-top: 20px;">
+            <button onclick="window.electron.checkForUpdate()">Check for Updates Now</button>
+            <button onclick="location.reload()">Reload Application</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div class="version-info">
+      App Version: <span id="footer-version">Loading...</span>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

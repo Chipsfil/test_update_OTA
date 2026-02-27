@@ -1,0 +1,21 @@
+<svg width="256" height="256" viewBox="0 0 256 256" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background circle -->
+  <circle cx="128" cy="128" r="120" fill="#667eea" stroke="#764ba2" stroke-width="4"/>
+  
+  <!-- Electron orbits -->
+  <circle cx="128" cy="128" r="80" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  <circle cx="128" cy="128" r="50" fill="none" stroke="rgba(255,255,255,0.3)" stroke-width="2"/>
+  
+  <!-- Nucleus -->
+  <circle cx="128" cy="128" r="12" fill="white"/>
+  
+  <!-- Electrons -->
+  <circle cx="208" cy="128" r="6" fill="#fbbf24"/>
+  <circle cx="128" cy="48" r="6" fill="#fbbf24"/>
+  <circle cx="60" cy="128" r="6" fill="#fbbf24"/>
+  
+  <!-- Text -->
+  <text x="128" y="220" font-size="16" font-weight="bold" text-anchor="middle" fill="white" font-family="Arial">
+    OTA Test
+  </text>
+</svg>
